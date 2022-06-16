@@ -1,10 +1,19 @@
+import events from './events';
+
 class todo {
-    constructor(name, dueDate, priority, notes) {
+    constructor(name, description, dueDate, priority, notes, status) {
         this.name = name;
+        this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
+        this.status = status
     }
 };
 
-export default todo;
+function addToDo(project, todo) {
+    project.todos.push(todo);
+    events.emit('Render', project);
+}
+
+export {addToDo, todo};

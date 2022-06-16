@@ -1,3 +1,11 @@
+let projects = (() => {
+    let projects = [];
+
+    return {
+        projects: projects
+    }
+})();
+
 class project {
     constructor (name, todos) {
         this.name = name;
@@ -5,4 +13,8 @@ class project {
     };
 };
 
-export default project;
+const addProject = ((project) => {
+    projects.projects.push(project);
+});
+
+export { project, projects, addProject };
