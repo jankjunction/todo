@@ -2,15 +2,22 @@ import './style.css';
 import { todo, addToDo } from './todo.js';
 import { project, projects, addProject} from './project.js';
 import buildHeader from './header.js';
-import { render } from './render.js';
+import { projectRender } from './projectrender.js';
 import {collapse} from './collapsible.js';
-import buildSidebar from './sidebar.js';
-import buildNav from './nav.js';
+import buildSidebar from './sidebar/sidebar.js';
+import { buildNav, newItemNav } from './sidebar/nav.js';
+import { navprojects } from './sidebar/projects.js';
 import clearDiv from './clearDiv.js'
+import projectForm from './projectform.js';
+import todoForm from './todoform.js';
+import domevents from './domevents.js';
+import { listener } from './listener.js';
+import events from './events.js'
 
 buildHeader();
 buildSidebar();
 buildNav();
+newItemNav();
 
 let defaultProject = new project('Default Project', []);
 let defaultProject2 = new project('My Hectic Life', []);
@@ -26,5 +33,14 @@ addToDo(defaultProject2, newTodo3);
 addProject(defaultProject);
 addProject(defaultProject2);
 
-render();
+navprojects();
 collapse();
+projectForm();
+todoForm();
+domevents.newProject();
+domevents.newToDo();
+domevents.projectClick();
+
+
+projectRender(defaultProject2);
+listener();

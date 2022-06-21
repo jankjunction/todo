@@ -38,14 +38,21 @@ html {
 
   #sidebar {
     display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 24px;
+  }
 
-    grid-row-start: 2;
+  #nav, #createNew {
+    display: grid;
+    grid-auto-flow: row;
     font-size: 1.25rem;
   }
 
-  #projects-container {
+  #project-container {
     grid-row-start: 2;
     grid-column-start: 2;
+    display: grid;
+    gap: 16px;
   }
 
   .project {
@@ -58,15 +65,35 @@ html {
     grid-auto-flow: column;
     grid-template-columns: repeat(6, 1fr);
     justify-items: start;
-  }
-
-  .invisible > div {
-    display: none;
+    gap: 16px;
   }
 
   .collapsible {
     cursor: default;
   }
+
+  #project-form,
+  #todo-form  {
+    display: grid;
+    grid-auto-flow: row;
+    border: 1px solid black;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .project-title {
+    font-size: 2rem;
+  }
+
+  .invisible {
+    display: none !important;
+  }
+
 
 
 

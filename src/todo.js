@@ -13,7 +13,6 @@ class todo {
 
 function addToDo(project, todo) {
     project.todos.push(todo);
-    events.emit('Render', project);
 }
 
 export {addToDo, todo};

@@ -1,10 +1,6 @@
 import { projects } from './project.js';
 
 const render = (() => {
-    let contentContainer = document.getElementById('content');
-    let projectsDiv = document.createElement('div');
-    projectsDiv.setAttribute('id', 'projects-container');
-    contentContainer.appendChild(projectsDiv);
 
     const renderProjects = (() => {
             
@@ -15,15 +11,11 @@ const render = (() => {
             projectsDiv.appendChild(div);
             renderToDos(element, div);
         });
-
-        return {
-            renderProjects: renderProjects
-        }
     });
 
     const renderToDos = ((todo, div) => {
         let todoscontainer = document.createElement('div');
-        todoscontainer.setAttribute('class', 'todos-container invisible');
+        todoscontainer.setAttribute('class', 'todos-container');
         div.appendChild(todoscontainer);
         todo.todos.forEach(element => {
 
@@ -41,12 +33,11 @@ const render = (() => {
 
     });
 
-    renderProjects();
-
     return {
         renderProjects: renderProjects,
+        renderToDos: renderToDos
     }
 
-});
+})();
 
 export { render }; 
