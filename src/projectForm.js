@@ -28,6 +28,8 @@ const projectForm = (() => {
         newProject.todos = [];
         projectFormDiv.classList.toggle('invisible');
         events.emit('New Project', newProject);
+        let projectContainer = document.getElementById('project-container');
+        events.emit('Clear Div', projectContainer)
         
     })
 });

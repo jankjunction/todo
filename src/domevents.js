@@ -2,6 +2,7 @@ import { project } from "./project";
 import { projects } from "./project";
 import clearDiv from "./clearDiv";
 import { projectRender } from "./projectrender";
+import events from "./events";
 
 const domevents = (() => {
     const newProject = (() => {
@@ -13,24 +14,34 @@ const domevents = (() => {
         })
     });
     const newToDo = (() => {
-        let newToDoBtn = document.getElementById('new-todo');
+        let content = document.getElementById('content');
 
-        newToDoBtn.addEventListener('click', () => {
-            let todoForm = document.getElementById('todo-form');
-            todoForm.classList.toggle('invisible');
+        content.addEventListener('click', (e) => {
+            if (e.target.id === 'new-todo') {
+                if (e.target.childNodes[0].data === '+') {
+                let todoForm = document.getElementById('todo-form');
+                todoForm.classList.toggle('invisible');
+                }
+            }
         })
     });
 
     const projectClick = (() => {
-        let projectBtn = document.querySelectorAll('.nav-project')
-        
-        for (let i = 0; i < projectBtn.length; i++) {
-            projectBtn[i].addEventListener('click', () => {
+        let sidebar = document.getElementById('sidebar');
+
+        sidebar.addEventListener('click', (e) => {
+            if (e.target.attributes[0].nodeValue === 'nav-project') {
                 let projectContainer = document.getElementById('project-container');
                 clearDiv(projectContainer);
-                projectRender(projects.projects[i]);
-            });
-        }
+                for (let i = 0; i < projects.projects.length; i++) {
+                    if (e.target.childNodes[0].data === projects.projects[i].name) {
+                        projectRender(projects.projects[i]);
+                    }
+                }
+
+            }
+        });
+        
 });
 
     return {

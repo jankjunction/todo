@@ -6,6 +6,12 @@ const navprojects = (() => {
     projectsDiv.setAttribute('id', 'projects-nav');
 
     sidebarDiv.appendChild(projectsDiv)
+
+    let projectsTitle = document.createElement('div');
+    projectsTitle.textContent = 'Projects';
+    projectsTitle.setAttribute('id', 'projects-nav-title');
+
+    projectsDiv.appendChild(projectsTitle);
     projects.projects.forEach(element => {
         let project = document.createElement('div');
         project.setAttribute('class', 'nav-project');

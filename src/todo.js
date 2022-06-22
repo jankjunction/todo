@@ -7,7 +7,6 @@ class todo {
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.status = status
     }
 };
 

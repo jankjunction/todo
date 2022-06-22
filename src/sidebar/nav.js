@@ -26,13 +26,8 @@ const newItemNav = (() => {
     let newProject = document.createElement('span');
     newProject.setAttribute('id', 'new-project');
     newProject.textContent = 'New Project';
-    
-    let newTodo = document.createElement('span');
-    newTodo.setAttribute('id', 'new-todo');
-    newTodo.textContent = 'New Todo';
 
     createNav.appendChild(newProject);
-    createNav.appendChild(newTodo);
     sidebarDiv.appendChild(createNav);
 });
 

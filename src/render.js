@@ -29,6 +29,10 @@ const render = (() => {
                 div.textContent = field[1];
                 todoContainer.appendChild(div);
             });
+
+            let checkbox = document.createElement('input');
+            checkbox.type="checkbox";
+            todoContainer.appendChild(checkbox);
         });
 
     });

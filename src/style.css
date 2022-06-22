@@ -1,6 +1,7 @@
 html {
     box-sizing: border-box;
     font-size: 16px;
+    font-family: sans-serif;
   }
   
   *, *:before, *:after {
@@ -33,19 +34,33 @@ html {
     display: grid;
     grid-auto-flow: column;
     gap: 16px;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 2fr 10fr;
   }
 
   #sidebar {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 24px;
+    padding: 16px;
+    border-right: 1px solid grey;
   }
 
   #nav, #createNew {
     display: grid;
     grid-auto-flow: row;
     font-size: 1.25rem;
+  }
+
+  #projects-nav-title {
+    font-size: 1.25rem;
+  }
+
+  .nav-project {
+    font-size: 1rem;
+  }
+
+  .nav-project:hover {
+    color: lightskyblue;
   }
 
   #project-container {
@@ -59,6 +74,10 @@ html {
     font-size: 1.5rem;
   }
 
+  .todos-container {
+    display: grid;
+  }
+
   .todo {
     font-size: 1rem;
     display: grid;
@@ -66,6 +85,7 @@ html {
     grid-template-columns: repeat(6, 1fr);
     justify-items: start;
     gap: 16px;
+    border-bottom: 1px solid grey;
   }
 
   .collapsible {
@@ -74,6 +94,7 @@ html {
 
   #project-form,
   #todo-form  {
+    background-color: white;
     display: grid;
     grid-auto-flow: row;
     border: 1px solid black;
@@ -86,8 +107,19 @@ html {
     gap: 16px;
   }
 
+  .project-header {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 1fr;
+  }
+
   .project-title {
-    font-size: 2rem;
+    font-size: 3rem;
+  }
+
+  #new-todo {
+    font-size: 3rem;
+    justify-self: start;
   }
 
   .invisible {

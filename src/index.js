@@ -21,9 +21,9 @@ newItemNav();
 
 let defaultProject = new project('Default Project', []);
 let defaultProject2 = new project('My Hectic Life', []);
-let newTodo = new todo('Grocery Shop', 'Go Grocery Shopping at Meijer', '06/18/2022', 'low', 'get milk and cookies', 'incomplete');
-let newTodo2 = new todo('Run Errands', 'Run all My errands', '06/18/2022', 'med', `don't forget the bank`, 'incomplete');
-let newTodo3 = new todo('Pick Up Kids', 'Pick up the kids from school', '06/18/2022', 'high', `don't forget Sally!!!!`, 'incomplete');
+let newTodo = new todo('Grocery Shop', 'Go Grocery Shopping at Meijer', '06/18/2022', 'low', 'get milk and cookies');
+let newTodo2 = new todo('Run Errands', 'Run all My errands', '06/18/2022', 'med', `don't forget the bank`);
+let newTodo3 = new todo('Pick Up Kids', 'Pick up the kids from school', '06/18/2022', 'high', `don't forget Sally!!!!`);
 
 
 addToDo(defaultProject, newTodo);
@@ -36,11 +36,12 @@ addProject(defaultProject2);
 navprojects();
 collapse();
 projectForm();
-todoForm();
 domevents.newProject();
-domevents.newToDo();
 domevents.projectClick();
 
 
-projectRender(defaultProject2);
+projectRender(defaultProject);
 listener();
+
+todoForm();
+domevents.newToDo();
