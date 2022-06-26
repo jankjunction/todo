@@ -31,6 +31,7 @@ const render = (() => {
             });
 
             let checkbox = document.createElement('input');
+            checkbox.setAttribute('id', 'checkbox');
             checkbox.type="checkbox";
             todoContainer.appendChild(checkbox);
         });

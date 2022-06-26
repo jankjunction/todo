@@ -1,0 +1,6 @@
+{"projects":
+    [{"name":"Default Project","todos":[{"name":"Grocery Shop","description":"Go Grocery Shopping at Meijer","dueDate":"2022-06-24","priority":"low","notes":"get milk and cookies"}]},
+     {"name":"My Hectic Life","todos":[{"name":"Run Errands","description":"Run all My errands","dueDate":"2022-06-24","priority":"med","notes":"don't forget the bank"},
+     {"name":"Pick Up Kids","description":"Pick up the kids from school","dueDate":"2022-06-24","priority":"high","notes":"don't forget Sally!!!!"}]}
+    ]
+}

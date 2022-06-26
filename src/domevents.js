@@ -2,6 +2,7 @@ import { project } from "./project";
 import { projects } from "./project";
 import clearDiv from "./clearDiv";
 import { projectRender } from "./projectrender";
+import { todayRender, thisWeekRender } from "./timerender";
 import events from "./events";
 
 const domevents = (() => {
@@ -42,12 +43,41 @@ const domevents = (() => {
             }
         });
         
-});
+    });
+
+    const todayClick = (() => {
+        let sidebar = document.getElementById('sidebar');
+
+        sidebar.addEventListener('click', (e) => {
+            if (e.target.attributes[0].nodeValue === 'today') {
+                let projectContainer = document.getElementById('project-container');
+                clearDiv(projectContainer);
+                todayRender();
+                }
+
+            });
+    
+    });
+
+    const thisWeekClick = (() => {
+        let sidebar = document.getElementById('sidebar');
+
+        sidebar.addEventListener('click', (e) => {
+            if (e.target.attributes[0].nodeValue === 'this-week') {
+                let projectContainer = document.getElementById('project-container');
+                clearDiv(projectContainer);
+                thisWeekRender();
+                }
+
+            });
+    });
 
     return {
         newProject: newProject,
         newToDo: newToDo,
         projectClick: projectClick,
+        todayClick: todayClick,
+        thisWeekClick: thisWeekClick
     }
 })();
 
