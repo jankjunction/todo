@@ -12,12 +12,14 @@ import todoForm from './todoform.js';
 import domevents from './domevents.js';
 import { listener } from './listener.js';
 import { init } from './init.js';
+import { getToDoContainer } from './gettodocontainer';
 
 buildHeader();
 buildSidebar();
 buildNav();
 newItemNav();
 init();
+projectRender(projects.projects[0]);
 navprojects();
 collapse();
 projectForm();
@@ -27,9 +29,7 @@ domevents.projectClick();
 domevents.todayClick();
 domevents.thisWeekClick();
 domevents.newToDo();
-
-
-projectRender(projects.projects[0]);
+domevents.toDoClick();
 listener();
 
 

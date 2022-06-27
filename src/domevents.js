@@ -1,9 +1,9 @@
-import { project } from "./project";
 import { projects } from "./project";
 import clearDiv from "./clearDiv";
 import { projectRender } from "./projectrender";
 import { todayRender, thisWeekRender } from "./timerender";
-import events from "./events";
+import { getToDoById } from './todo';
+import events from './events';
 
 const domevents = (() => {
     const newProject = (() => {
@@ -14,12 +14,13 @@ const domevents = (() => {
             projectForm.classList.toggle('invisible');
         })
     });
+
     const newToDo = (() => {
         let content = document.getElementById('content');
 
         content.addEventListener('click', (e) => {
             if (e.target.id === 'new-todo') {
-                if (e.target.childNodes[0].data === '+') {
+                if (e.target.childNodes[0].data === '+ new todo') {
                 let todoForm = document.getElementById('todo-form');
                 todoForm.classList.toggle('invisible');
                 }
@@ -37,12 +38,11 @@ const domevents = (() => {
                 for (let i = 0; i < projects.projects.length; i++) {
                     if (e.target.childNodes[0].data === projects.projects[i].name) {
                         projectRender(projects.projects[i]);
+                        events.emit('Project Changed', '');
                     }
                 }
-
             }
-        });
-        
+        });      
     });
 
     const todayClick = (() => {
@@ -52,11 +52,10 @@ const domevents = (() => {
             if (e.target.attributes[0].nodeValue === 'today') {
                 let projectContainer = document.getElementById('project-container');
                 clearDiv(projectContainer);
+                events.emit('Project Changed', '');
                 todayRender();
                 }
-
-            });
-    
+            });  
     });
 
     const thisWeekClick = (() => {
@@ -66,10 +65,20 @@ const domevents = (() => {
             if (e.target.attributes[0].nodeValue === 'this-week') {
                 let projectContainer = document.getElementById('project-container');
                 clearDiv(projectContainer);
+                events.emit('Project Changed', '');
                 thisWeekRender();
                 }
-
             });
+    });
+
+    const toDoClick = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('click', (e) => {
+            if ((e.target.parentElement.attributes[0].nodeValue === 'todo')) {
+                let currentToDo = getToDoById(e.target.parentElement.childNodes[2].textContent);
+                events.emit('Render ToDo', currentToDo);
+            }
+        });  
     });
 
     return {
@@ -77,7 +86,8 @@ const domevents = (() => {
         newToDo: newToDo,
         projectClick: projectClick,
         todayClick: todayClick,
-        thisWeekClick: thisWeekClick
+        thisWeekClick: thisWeekClick,
+        toDoClick: toDoClick,
     }
 })();
 

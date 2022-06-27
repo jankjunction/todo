@@ -1,4 +1,5 @@
 import events from './events';
+import { projects } from './project';
 
 class todo {
     constructor(name, description, dueDate, priority, notes, id) {
@@ -20,4 +21,19 @@ function toDoID() {
     return id;
 };
 
-export {addToDo, todo, toDoID};
+const getToDoById = ((id) => {
+    let projs = projects.projects;
+    for (let i = 0; i < projs.length; i++) {
+
+        let todos = projects.projects[i].todos;
+
+        for (let j = 0; j < todos.length; j++) {
+                if (id === projs[i].todos[j].id) {
+                    return projs[i].todos[j];
+                } else {
+            }
+        }
+    }
+});
+
+export {addToDo, todo, toDoID, getToDoById};

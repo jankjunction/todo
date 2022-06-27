@@ -1,5 +1,5 @@
 import events from './events.js';
-import { getCurrentProject } from './getCurrentProject.js';
+import { getCurrentProject } from './project.js';
 import { addToDo, todo } from './todo.js';
 
 const todoForm = (() => {

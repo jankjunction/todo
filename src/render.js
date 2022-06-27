@@ -24,18 +24,14 @@ const render = (() => {
             todoscontainer.appendChild(todoContainer);
 
             Object.entries(element).forEach(field => {
-                let div = document.createElement('div');
-                div.setAttribute('class', field[0]);
-                div.textContent = field[1];
-                todoContainer.appendChild(div);
+                if ((field[0] === 'name') || (field[0] ==='dueDate') || (field[0] === 'id')) {
+                    let div = document.createElement('div');
+                    div.setAttribute('class', field[0]);
+                    div.textContent = field[1];
+                    todoContainer.appendChild(div);
+                }
             });
-
-            let checkbox = document.createElement('input');
-            checkbox.setAttribute('id', 'checkbox');
-            checkbox.type="checkbox";
-            todoContainer.appendChild(checkbox);
         });
-
     });
 
     return {

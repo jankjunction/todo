@@ -3,9 +3,9 @@ import events from "./events";
 import { addProject } from "./project";
 import { projectRender } from "./projectrender";
 import { navprojects } from "./sidebar/projects";
-import { addToDo } from "./todo";
-import todoForm from "./todoform";
 import { updateStorage } from "./updateStorage";
+import { toDoRender } from "./todorender";
+import { getToDoContainer } from "./gettodocontainer";
 
 const listener = (() => {
     events.on('Clear Div', clearDiv);
@@ -16,6 +16,9 @@ const listener = (() => {
     events.on('New ToDo', projectRender);
     events.on('New Project', updateStorage);
     events.on('New ToDo', updateStorage);
+    events.on('Render ToDo', toDoRender);
+    events.on('Project Changed', getToDoContainer);
+    events.on('ToDo Container Grabbed', clearDiv);
 });
 
 export { listener };

@@ -10,7 +10,7 @@ const todayRender = (() => {
     todayDiv.setAttribute('id', 'project-container');
 
     let todayTitle = document.createElement('div');
-    todayTitle.setAttribute('class', 'today-title');
+    todayTitle.setAttribute('class', 'title');
     todayTitle.textContent = 'Today';
 
     let todayHeader = document.createElement('div');
@@ -34,7 +34,7 @@ const thisWeekRender = (() => {
     thisWeekDiv.setAttribute('id', 'project-container');
 
     let thisWeekTitle = document.createElement('div');
-    thisWeekTitle.setAttribute('class', 'this-week-title');
+    thisWeekTitle.setAttribute('class', 'title');
     thisWeekTitle.textContent = 'This Week';
 
     let thisWeekHeader = document.createElement('div');
@@ -58,7 +58,6 @@ const todayToDos = (() => {
     for (let i = 0; i < projects.projects.length; i++) {
         let project = projects.projects[i];
         for (let j = 0; j < project.todos.length; j++) {
-            console.log(isToday(parseISO(project.todos[j].dueDate)));
             if (isToday(parseISO(project.todos[j].dueDate))) {
             toDos.push(project.todos[j]);
             }
@@ -74,7 +73,6 @@ const thisWeekToDos = (() => {
     for (let i = 0; i < projects.projects.length; i++) {
         let project = projects.projects[i];
         for (let j = 0; j < project.todos.length; j++) {
-            console.log(isThisWeek(parseISO(project.todos[j].dueDate)));
             if (isThisWeek(parseISO(project.todos[j].dueDate))) {
             toDos.push(project.todos[j]);
             }

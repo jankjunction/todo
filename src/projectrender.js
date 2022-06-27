@@ -9,11 +9,12 @@ const projectRender = ((project) => {
 
     let newTodo = document.createElement('span');
     newTodo.setAttribute('id', 'new-todo');
-    newTodo.textContent = '+';
+    newTodo.textContent = '+ new todo';
 
     let projectTitle = document.createElement('div');
-    projectTitle.setAttribute('class', 'project-title');
+    projectTitle.setAttribute('class', 'title');
     projectTitle.textContent = `${project.name}`;
+    projectTitle.setAttribute('contenteditable', 'true');
 
     let projectHeader = document.createElement('div');
     projectHeader.setAttribute('class', 'project-header');
