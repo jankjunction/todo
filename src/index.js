@@ -30,6 +30,7 @@ domevents.todayClick();
 domevents.thisWeekClick();
 domevents.newToDo();
 domevents.toDoClick();
+domevents.deleteToDoClick();
 listener();
 
 

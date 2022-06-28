@@ -1,8 +1,8 @@
-import { projects } from "./project";
+import { getCurrentProject, projects } from "./project";
 import clearDiv from "./clearDiv";
 import { projectRender } from "./projectrender";
 import { todayRender, thisWeekRender } from "./timerender";
-import { getToDoById } from './todo';
+import { getToDoById, deleteToDo } from './todo';
 import events from './events';
 
 const domevents = (() => {
@@ -77,8 +77,19 @@ const domevents = (() => {
             if ((e.target.parentElement.attributes[0].nodeValue === 'todo')) {
                 let currentToDo = getToDoById(e.target.parentElement.childNodes[2].textContent);
                 events.emit('Render ToDo', currentToDo);
-            }
+            };
         });  
+    });
+
+    const deleteToDoClick = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('click', (e) => {
+            if (e.target.textContent === 'Delete ToDo') {
+                let currentToDo = getToDoById(e.target.parentElement.childNodes[0].textContent);
+                console.log(getCurrentProject());
+                deleteToDo(getCurrentProject(), currentToDo);
+            };
+        });
     });
 
     return {
@@ -88,6 +99,7 @@ const domevents = (() => {
         todayClick: todayClick,
         thisWeekClick: thisWeekClick,
         toDoClick: toDoClick,
+        deleteToDoClick: deleteToDoClick
     }
 })();
 

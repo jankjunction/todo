@@ -6,6 +6,7 @@ import { navprojects } from "./sidebar/projects";
 import { updateStorage } from "./updateStorage";
 import { toDoRender } from "./todorender";
 import { getToDoContainer } from "./gettodocontainer";
+import { deleteToDo } from "./todo";
 
 const listener = (() => {
     events.on('Clear Div', clearDiv);
@@ -19,6 +20,7 @@ const listener = (() => {
     events.on('Render ToDo', toDoRender);
     events.on('Project Changed', getToDoContainer);
     events.on('ToDo Container Grabbed', clearDiv);
+    events.on('ToDo Deleted', updateStorage);
 });
 
 export { listener };

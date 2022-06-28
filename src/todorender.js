@@ -13,6 +13,7 @@ const toDoRender = ((toDo) => {
     toDoTitle.setAttribute('contenteditable', 'true');
 
     let dueDate = document.createElement('div')
+    dueDate.setAttribute('class', 'container');
     let dueDateLabel = document.createElement('div')
     dueDateLabel.textContent = 'Due Date:'
     let toDoDueDate = document.createElement('input');
@@ -23,6 +24,7 @@ const toDoRender = ((toDo) => {
     dueDate.appendChild(toDoDueDate);
     
     let description = document.createElement('div');
+    description.setAttribute('class', 'container');
     let descriptionLabel = document.createElement('label');
     descriptionLabel.textContent = 'Description:';
     let toDoDescription = document.createElement('div')
@@ -34,8 +36,6 @@ const toDoRender = ((toDo) => {
 
     let toDoPriority = document.createElement('div');
     toDoPriority.setAttribute('id', 'todo-priority');
-
-    let priorityDiv = document.createElement('div');
 
     let priorityLabel = document.createElement('label');
     priorityLabel.textContent = 'Priority:';
@@ -51,6 +51,7 @@ const toDoRender = ((toDo) => {
     toDoPriority.appendChild(priority);
 
     let notes = document.createElement('div');
+    notes.setAttribute('class', 'container');
     let notesLabel = document.createElement('label');
     notesLabel.textContent = 'Notes:';
     let toDoNotes = document.createElement('div');
@@ -65,13 +66,17 @@ const toDoRender = ((toDo) => {
     toDoId.setAttribute('class', 'id');
     toDoId.textContent = `${toDo.id}`;
 
+    let deleteBtn = document.createElement('button')
+    deleteBtn.textContent = 'Delete ToDo'
 
+
+    toDoDiv.appendChild(toDoId);
     toDoDiv.appendChild(toDoTitle);
     toDoDiv.appendChild(dueDate);
     toDoDiv.appendChild(description);
     toDoDiv.appendChild(toDoPriority);
     toDoDiv.appendChild(notes);
-    toDoDiv.appendChild(toDoId);
+    toDoDiv.appendChild(deleteBtn);
 
 
     contentContainer.appendChild(toDoDiv);

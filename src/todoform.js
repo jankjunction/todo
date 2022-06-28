@@ -13,6 +13,7 @@ const todoForm = (() => {
     nameLabel.textContent = 'todo name';
     let name = document.createElement('input');
     name.setAttribute('id', 'new-todo-name');
+    name.setAttribute('required', '');
 
     let dueDateLabel = document.createElement('label');
     dueDateLabel.textContent = 'Due Date';

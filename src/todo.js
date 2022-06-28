@@ -1,5 +1,7 @@
 import events from './events';
-import { projects } from './project';
+import { getCurrentProject, projects } from './project';
+import { projectRender } from './projectrender';
+import clearDiv from './clearDiv';
 
 class todo {
     constructor(name, description, dueDate, priority, notes, id) {
@@ -15,6 +17,23 @@ class todo {
 function addToDo(project, todo) {
     project.todos.push(todo);
 };
+
+const deleteToDo = ((project, todo) => {
+    console.log(project);
+    console.log(todo);
+    let projectContainer = document.getElementById('project-container');
+    clearDiv(projectContainer);
+        for (let i = 0; i < project.todos.length; i++) {
+            if (project.todos[i] === todo) {
+                project.todos.splice(i, 1)
+                console.log((projects.projects[i]));
+                projectRender(project);
+                events.emit('Project Changed', '');
+            };
+        };
+
+        events.emit('ToDo Deleted', '');
+});
 
 function toDoID() {
     let id = Date.now().toString(36) + Math.floor(Math.pow(10, 12) + Math.random() * 9*Math.pow(10, 12)).toString(36);
@@ -36,4 +55,4 @@ const getToDoById = ((id) => {
     }
 });
 
-export {addToDo, todo, toDoID, getToDoById};
+export {addToDo, todo, toDoID, getToDoById, deleteToDo};
