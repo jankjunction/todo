@@ -1,4 +1,4 @@
-import { project, projects, addProject } from "./project.js";
+import { project, projects, addProject, projectID } from "./project.js";
 
 
 const init = (() => {
@@ -8,8 +8,9 @@ const init = (() => {
             addProject(storedProjects.projects[i]);
         }
     } else {
-        let defaultProject = new project('Default Project', []);
+        let defaultProject = new project('Default Project', [], projectID());
         addProject(defaultProject);
+        
     };
 });
 

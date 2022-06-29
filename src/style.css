@@ -67,6 +67,7 @@ html {
   }
 
   #project-container {
+    position: relative;
     grid-row-start: 2;
     grid-column-start: 2;
     display: grid;
@@ -122,6 +123,7 @@ html {
 
   #project-form,
   #todo-form  {
+    z-index: 100;
     background-color: white;
     display: grid;
     grid-auto-flow: row;
@@ -157,6 +159,15 @@ html {
 
   .invisible {
     display: none !important;
+  }
+
+  #project-delete {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    height: min-content;
   }
 
 

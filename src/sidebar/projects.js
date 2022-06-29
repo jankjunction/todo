@@ -17,6 +17,11 @@ const navprojects = (() => {
         project.setAttribute('class', 'nav-project');
         project.textContent = element.name;
         projectsDiv.appendChild(project);
+
+        let id = document.createElement('div')
+        id.setAttribute('class', 'invisible');
+        id.textContent = element.id;
+        project.appendChild(id);
         });
     });
 

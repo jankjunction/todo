@@ -22,16 +22,17 @@ const projectForm = (() => {
     projectFormDiv.appendChild(submit);
     content.appendChild(projectFormDiv);
 
-    submit.addEventListener('click', () => {
-        let newProject = new project;
-        newProject.name = title.value;
-        newProject.todos = [];
-        projectFormDiv.classList.toggle('invisible');
-        events.emit('New Project', newProject);
-        let projectContainer = document.getElementById('project-container');
-        events.emit('Clear Div', projectContainer)
-        
-    })
+    content.addEventListener('click', (e) => {
+        if (e.target.id === 'project-submit') {
+            let newProject = new project;
+            newProject.name = title.value;
+            newProject.todos = [];
+            projectFormDiv.classList.toggle('invisible');
+            events.emit('New Project', newProject);
+            let projectContainer = document.getElementById('project-container');
+            events.emit('Clear Div', projectContainer)
+        }; 
+    });
 });
 
 export default projectForm;

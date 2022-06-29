@@ -31,6 +31,8 @@ domevents.thisWeekClick();
 domevents.newToDo();
 domevents.toDoClick();
 domevents.deleteToDoClick();
+domevents.editProjectTitle();
+domevents.deleteProjectClick();
 listener();
 
 

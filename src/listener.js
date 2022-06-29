@@ -1,6 +1,6 @@
 import clearDiv from "./clearDiv";
 import events from "./events";
-import { addProject } from "./project";
+import { addProject, editProjectAttribute } from "./project";
 import { projectRender } from "./projectrender";
 import { navprojects } from "./sidebar/projects";
 import { updateStorage } from "./updateStorage";
@@ -21,6 +21,13 @@ const listener = (() => {
     events.on('Project Changed', getToDoContainer);
     events.on('ToDo Container Grabbed', clearDiv);
     events.on('ToDo Deleted', updateStorage);
+    events.on('Project Edited', editProjectAttribute);
+    events.on('Project Edited', updateStorage);
+    events.on('Render Sidebar', navprojects)
+    events.on('Project Deleted', clearDiv)
+    events.on('Project Deleted', navprojects);
+    events.on('Project Deleted', updateStorage);
+    events.on('Render After Project Delete', projectRender);
 });
 
 export { listener };

@@ -47,6 +47,9 @@ const toDoRender = ((toDo) => {
         option.textContent = priorities[i];
         priority.appendChild(option);
     }
+
+    priority.option = toDo.priority;
+    
     toDoPriority.appendChild(priorityLabel);
     toDoPriority.appendChild(priority);
 
