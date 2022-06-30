@@ -81,10 +81,11 @@ html {
   }
 
   #todo-container {
+    position: relative;
     grid-row-start: 2;
     grid-column-start: 3;
     display: grid;
-    grid-template-rows: repeat (5, min-content);
+    grid-template-rows: repeat(5, calc(min-content + 25px));
     gap: 16px;
     background-color: lightgray;
     border-radius: 8px;
@@ -103,12 +104,14 @@ html {
   .todo {
     font-size: 1rem;
     display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: repeat(5, fr);
-    justify-items: start;
+    grid-template-columns: 2fr 1fr;
     gap: 16px;
     border-bottom: 1px solid grey;
     padding: 4px 8px 4px 8px;
+  }
+
+  .todo > .name, .dueDate {
+    width: 100%;
   }
 
   .todo:hover {
@@ -149,6 +152,12 @@ html {
 
   .title {
     font-size: 3rem;
+    padding: 8px;
+  }
+
+  .title:focus, #todo-description:focus, #todo-notes:focus {
+    background-color: white;
+    outline-color: greenyellow;
   }
 
   #new-todo {
@@ -174,8 +183,8 @@ html {
     border: 0px solid grey;
     padding: 4px 8px 4px 8px;
   }
-  
-  #project-delete:hover {
+
+  #project-delete:hover, #delete-todo:hover  {
     background-color: crimson;
     color: white;
   }
@@ -188,11 +197,6 @@ html {
     border-radius: 8px;
     border: 0px solid grey;
     padding: 4px 8px 4px 8px;
-  }
-  
-  #delete-todo:hover {
-    background-color: crimson;
-    color: white;
   }
 
 
