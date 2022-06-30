@@ -55,4 +55,21 @@ const getToDoById = ((id) => {
     }
 });
 
-export {addToDo, todo, toDoID, getToDoById, deleteToDo};
+const editToDoAttribute = ((data) => {
+    console.log(data);
+    let projectId = data[0]
+    let toDoId = data[1];
+    let attr = data[2];
+    let newAttrValue = data[3];
+    for (let i = 0; i < projects.projects.length; i++) {
+        if (projects.projects[i].id === projectId) {
+            for (let j = 0; j <projects.projects[i].todos.length; j++) {
+                if (projects.projects[i].todos[j].id === toDoId) {
+                    projects.projects[i].todos[j][`${attr}`] = newAttrValue;
+                };
+            };
+        };
+    };
+});
+
+export {addToDo, todo, toDoID, getToDoById, deleteToDo, editToDoAttribute};

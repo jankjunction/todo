@@ -1,3 +1,4 @@
+import clearDiv from "./clearDiv";
 import events from "./events";
 
 let projects = (() => {
@@ -32,18 +33,18 @@ const deleteProject = ((project) => {
     for (let i = 0; i < projects.projects.length; i++) {
         if (projects.projects[i] === project) {
             projects.projects.splice(i, 1);
+            let projectContainer = document.getElementById('project-container');
+            clearDiv(projectContainer);
             let projectsNav = document.getElementById('projects-nav');
             events.emit('Project Deleted', projectsNav);
             let resultingProjects = projects.projects;
             events.emit('Render After Project Delete', resultingProjects[0]);
-            console.log(resultingProjects);
         };
     };
 });
 
 const getCurrentProject = (() => {
     let currentProjectName = document.getElementById('project-container').firstElementChild.textContent;
-    console.log(currentProjectName);
     for (let i = 0; i < projects.projects.length; i++) {
         if (currentProjectName === projects.projects[i].id) {
             return projects.projects[i];

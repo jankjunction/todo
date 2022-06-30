@@ -52,7 +52,6 @@ html {
     font-size: 1.25rem;
   }
 
-
   #projects-nav-title {
     font-size: 1.25rem;
     margin-bottom: 6px;
@@ -60,10 +59,13 @@ html {
 
   .nav-project {
     font-size: 1rem;
+    padding: 4px 8px 4px 8px;
   }
 
   .nav-project:hover {
-    color: lightskyblue;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
   }
 
   #project-container {
@@ -106,11 +108,13 @@ html {
     justify-items: start;
     gap: 16px;
     border-bottom: 1px solid grey;
+    padding: 4px 8px 4px 8px;
   }
 
   .todo:hover {
     background-color: black;
     color: white;
+    border-radius: 8px;
   }
 
   #checkbox {
@@ -163,13 +167,33 @@ html {
 
   #project-delete {
     position: absolute;
-    bottom: 0;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
+    bottom: 8px;
+    right: 8px;
     height: min-content;
+    border-radius: 8px;
+    border: 0px solid grey;
+    padding: 4px 8px 4px 8px;
+  }
+  
+  #project-delete:hover {
+    background-color: crimson;
+    color: white;
   }
 
+  #delete-todo {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    height: min-content;
+    border-radius: 8px;
+    border: 0px solid grey;
+    padding: 4px 8px 4px 8px;
+  }
+  
+  #delete-todo:hover {
+    background-color: crimson;
+    color: white;
+  }
 
 
 

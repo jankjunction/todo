@@ -6,6 +6,11 @@ const toDoRender = ((toDo) => {
     let toDoDiv = document.createElement('div');
     toDoDiv.setAttribute('id', 'todo-container');
 
+    let toDoId = document.createElement('div');
+    toDoId.setAttribute('id', 'todo-id');
+    toDoId.setAttribute('class', 'id');
+    toDoId.textContent = `${toDo.id}`;
+
     let toDoTitle = document.createElement('div');
     toDoTitle.setAttribute('id', 'todo-title');
     toDoTitle.setAttribute('class', 'title');
@@ -40,6 +45,7 @@ const toDoRender = ((toDo) => {
     let priorityLabel = document.createElement('label');
     priorityLabel.textContent = 'Priority:';
     let priority = document.createElement('select');
+    priority.setAttribute('id', 'todo-priority-select');
     let priorities = ['low', 'med', 'high'];
 
     for (let i = 0; i < priorities.length; i++) {
@@ -48,8 +54,8 @@ const toDoRender = ((toDo) => {
         priority.appendChild(option);
     }
 
-    priority.option = toDo.priority;
-    
+    priority.value = toDo.priority;
+
     toDoPriority.appendChild(priorityLabel);
     toDoPriority.appendChild(priority);
 
@@ -64,12 +70,8 @@ const toDoRender = ((toDo) => {
     notes.appendChild(notesLabel);
     notes.appendChild(toDoNotes);
 
-    let toDoId = document.createElement('div');
-    toDoId.setAttribute('id', 'todo-id');
-    toDoId.setAttribute('class', 'id');
-    toDoId.textContent = `${toDo.id}`;
-
     let deleteBtn = document.createElement('button')
+    deleteBtn.setAttribute('id', 'delete-todo');
     deleteBtn.textContent = 'Delete ToDo'
 
 

@@ -4,6 +4,7 @@ import { projectRender } from "./projectrender";
 import { todayRender, thisWeekRender } from "./timerender";
 import { getToDoById, deleteToDo } from './todo';
 import events from './events';
+import { getToDoContainer } from "./gettodocontainer";
 
 const domevents = (() => {
     const newProject = (() => {
@@ -76,9 +77,10 @@ const domevents = (() => {
     const toDoClick = (() => {
         let content = document.getElementById('content');
         content.addEventListener('click', (e) => {
-            if (e.target.parentElement.attributes[0]) {
+            if ((e.target.parentElement.attributes[0]) || (e.target.classList[0] === 'todo')) {
                 if ((e.target.parentElement.attributes[0].nodeValue === 'todo')) {
                     let currentToDo = getToDoById(e.target.parentElement.childNodes[2].textContent);
+                    getToDoContainer();
                     events.emit('Render ToDo', currentToDo);
                 };
             }
@@ -99,6 +101,7 @@ const domevents = (() => {
         let content = document.getElementById('content');
         content.addEventListener('click', (e) => {
             if (e.target.id === 'project-delete') {
+                getToDoContainer();
                 deleteProject(getCurrentProject());
             }
         });
@@ -116,6 +119,71 @@ const domevents = (() => {
         });
     });
 
+    const editToDoTitle = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('focusout', (e) => {
+            if ((e.target.id === 'todo-title')) {
+                let currentProject = getCurrentProject();
+                events.emit('ToDo Edited', [currentProject.id, e.target.parentElement.firstElementChild.textContent, 'name', e.target.textContent]);
+                let projectContainer = document.getElementById('project-container');
+                events.emit('Clear Div', projectContainer);
+                events.emit('Render Project', currentProject);
+            };
+        });
+    });
+
+    const editToDoDueDate = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('focusout', (e) => {
+            if ((e.target.id === 'todo-duedate') || (e.target.id === 'todo-priority')) {
+                let currentProject = getCurrentProject();
+                events.emit('ToDo Edited', [currentProject.id, e.target.parentElement.parentElement.firstElementChild.textContent, 'dueDate', e.target.value]);
+                let projectContainer = document.getElementById('project-container');
+                events.emit('Clear Div', projectContainer);
+                events.emit('Render Project', currentProject);
+            };
+        });
+    });
+
+    const editToDoPriority = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('focusout', (e) => {
+            if ((e.target.id === 'todo-priority-select')) {
+                let currentProject = getCurrentProject();
+                events.emit('ToDo Edited', [currentProject.id, e.target.parentElement.parentElement.firstElementChild.textContent, 'priority', e.target.value]);
+                let projectContainer = document.getElementById('project-container');
+                events.emit('Clear Div', projectContainer);
+                events.emit('Render Project', currentProject);
+            };
+        });
+    });
+
+    const editToDoDescription = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('focusout', (e) => {
+            if ((e.target.id === 'todo-description')) {
+                let currentProject = getCurrentProject();
+                events.emit('ToDo Edited', [currentProject.id, e.target.parentElement.parentElement.firstElementChild.textContent, 'description', e.target.textContent]);
+                let projectContainer = document.getElementById('project-container');
+                events.emit('Clear Div', projectContainer);
+                events.emit('Render Project', currentProject);
+            };
+        });
+    });
+
+    const editToDoNotes = (() => {
+        let content = document.getElementById('content');
+        content.addEventListener('focusout', (e) => {
+            if ((e.target.id === 'todo-notes')) {
+                let currentProject = getCurrentProject();
+                events.emit('ToDo Edited', [currentProject.id, e.target.parentElement.parentElement.firstElementChild.textContent, 'notes', e.target.textContent]);
+                let projectContainer = document.getElementById('project-container');
+                events.emit('Clear Div', projectContainer);
+                events.emit('Render Project', currentProject);
+            };
+        });
+    });
+
     return {
         newProject: newProject,
         newToDo: newToDo,
@@ -125,7 +193,12 @@ const domevents = (() => {
         toDoClick: toDoClick,
         deleteToDoClick: deleteToDoClick,
         editProjectTitle: editProjectTitle,
-        deleteProjectClick: deleteProjectClick
+        deleteProjectClick: deleteProjectClick,
+        editToDoTitle: editToDoTitle,
+        editToDoDueDate: editToDoDueDate,
+        editToDoPriority: editToDoPriority,
+        editToDoDescription: editToDoDescription,
+        editToDoNotes: editToDoNotes
     }
 })();
 

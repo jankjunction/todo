@@ -33,6 +33,11 @@ domevents.toDoClick();
 domevents.deleteToDoClick();
 domevents.editProjectTitle();
 domevents.deleteProjectClick();
+domevents.editToDoTitle();
+domevents.editToDoDueDate();
+domevents.editToDoPriority();
+domevents.editToDoDescription();
+domevents.editToDoNotes();
 listener();
 
 
