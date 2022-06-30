@@ -74,6 +74,12 @@ const todoForm = (() => {
         let projectContainer = document.getElementById('project-container');
         events.emit('Clear Div', projectContainer);
         events.emit('New ToDo', currentProject);
+
+        name.value = '';
+        dueDate.value = '';
+        description.value = '';
+        notes.value = '';
+        priority.value = '';
     })
 });
 

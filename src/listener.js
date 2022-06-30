@@ -26,7 +26,7 @@ const listener = (() => {
     events.on('Render Sidebar', navprojects)
     events.on('Project Deleted', clearDiv)
     events.on('Project Deleted', navprojects);
-    events.on('Project Deleted', updateStorage);
+    // events.on('Project Deleted', updateStorage);
     events.on('Render After Project Delete', projectRender);
 });
 
