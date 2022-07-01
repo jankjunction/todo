@@ -83,8 +83,15 @@ const toDoRender = ((toDo) => {
     toDoDiv.appendChild(notes);
     toDoDiv.appendChild(deleteBtn);
 
-
     contentContainer.appendChild(toDoDiv);
+
+    //Hides delete button if you are currently in the Today or This Week views
+    let currentProject = document.getElementById('project-container');
+    let title = currentProject.childNodes[0].childNodes[0].textContent;
+    if ((title === 'Today') || (title === 'This Week')) {
+        let todoDeleteBtn = document.getElementById('delete-todo');
+        todoDeleteBtn.classList.toggle('invisible');
+    };
 
 });
 

@@ -24,7 +24,6 @@ const todayRender = (() => {
     let todayProject = new project('todayProject', [...todos])
 
     render.renderToDos(todayProject, todayDiv);
-
 });
 
 const thisWeekRender = (() => {
@@ -48,7 +47,6 @@ const thisWeekRender = (() => {
     let thisWeekProject = new project('thisWeekProject', [...todos])
 
     render.renderToDos(thisWeekProject, thisWeekDiv);
-
 });
 
 const todayToDos = (() => {
@@ -80,5 +78,6 @@ const thisWeekToDos = (() => {
     }
     return toDos;
 });
+
 
 export { todayRender, todayToDos, thisWeekRender, thisWeekToDos };

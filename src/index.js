@@ -13,6 +13,7 @@ import domevents from './domevents.js';
 import { listener } from './listener.js';
 import { init } from './init.js';
 import { getToDoContainer } from './gettodocontainer';
+import { timeToDoDeleteCheck } from './timerender';
 
 buildHeader();
 buildSidebar();
