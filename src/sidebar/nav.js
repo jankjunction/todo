@@ -1,36 +1,34 @@
-const buildNav = (() => {
-    let sidebarDiv = document.getElementById('sidebar');
+const buildNav = () => {
+  let sidebarDiv = document.getElementById("sidebar");
 
-    let nav = document.createElement('span');
-    nav.setAttribute('id', 'nav');
+  let nav = document.createElement("span");
+  nav.setAttribute("id", "nav");
 
-    let today = document.createElement('span');
-    today.setAttribute('id', 'today');
-    today.textContent = 'Today';
-    
-    let thisWeek = document.createElement('div');
-    thisWeek.setAttribute('id', 'this-week');
-    thisWeek.textContent = 'This Week';
+  let today = document.createElement("span");
+  today.setAttribute("id", "today");
+  today.textContent = "Today";
 
-    nav.appendChild(today);
-    nav.appendChild(thisWeek);
-    sidebarDiv.appendChild(nav);
-});
+  let thisWeek = document.createElement("div");
+  thisWeek.setAttribute("id", "this-week");
+  thisWeek.textContent = "This Week";
 
-const newItemNav = (() => {
-    let sidebarDiv = document.getElementById('sidebar');
+  nav.appendChild(today);
+  nav.appendChild(thisWeek);
+  sidebarDiv.appendChild(nav);
+};
 
-    let createNav = document.createElement('div');
-    createNav.setAttribute('id', 'createNew');
+const newItemNav = () => {
+  let sidebarDiv = document.getElementById("sidebar");
 
-    let newProject = document.createElement('span');
-    newProject.setAttribute('id', 'new-project');
-    newProject.textContent = 'New Project';
+  let createNav = document.createElement("div");
+  createNav.setAttribute("id", "createNew");
 
-    createNav.appendChild(newProject);
-    sidebarDiv.appendChild(createNav);
-});
+  let newProject = document.createElement("span");
+  newProject.setAttribute("id", "new-project");
+  newProject.textContent = "New Project";
 
-
+  createNav.appendChild(newProject);
+  sidebarDiv.appendChild(createNav);
+};
 
 export { buildNav, newItemNav };
