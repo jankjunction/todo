@@ -52,6 +52,26 @@ html {
     font-size: 1.25rem;
   }
 
+  #new-project {
+    padding: 4px;
+  }
+
+  #new-project:hover {
+    background-color: greenyellow;
+    color: black;
+    border-radius: 8px;
+  }
+
+  #today, #this-week {
+    padding: 4px;
+  }
+
+  #today:hover, #this-week:hover {
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+  }
+
   #projects-nav-title {
     font-size: 1.25rem;
     margin-bottom: 6px;
