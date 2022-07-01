@@ -19,14 +19,11 @@ function addToDo(project, todo) {
 };
 
 const deleteToDo = ((project, todo) => {
-    console.log(project);
-    console.log(todo);
     let projectContainer = document.getElementById('project-container');
     clearDiv(projectContainer);
         for (let i = 0; i < project.todos.length; i++) {
             if (project.todos[i] === todo) {
                 project.todos.splice(i, 1)
-                console.log((projects.projects[i]));
                 projectRender(project);
                 events.emit('Project Changed', '');
             };
@@ -56,7 +53,6 @@ const getToDoById = ((id) => {
 });
 
 const editToDoAttribute = ((data) => {
-    console.log(data);
     let projectId = data[0]
     let toDoId = data[1];
     let attr = data[2];
