@@ -1,13 +1,18 @@
-import clearDiv from "./clearDiv";
-import events from "./events";
+import clearDiv from './clearDiv';
+import events from './events';
 
-let projects = (() => {
+const projects = (() => {
   let projects = [];
 
   return {
-    projects: projects,
+    projects,
   };
 })();
+
+function projectID() {
+  const id = window.crypto.randomUUID();
+  return id;
+}
 
 class project {
   constructor(name, todos) {
@@ -17,48 +22,42 @@ class project {
   }
 }
 
-function projectID() {
-  let id = window.crypto.randomUUID();
-  return id;
-}
+const addProject = (proj) => {
+  projects.projects.push(proj);
 
-const addProject = (project) => {
-  projects.projects.push(project);
-
-  let projectsNav = document.getElementById("projects-nav");
-  events.emit("Project Added", projectsNav);
+  const projectsNav = document.getElementById('projects-nav');
+  events.emit('Project Added', projectsNav);
 };
 
-const deleteProject = (project) => {
-  for (let i = 0; i < projects.projects.length; i++) {
-    if (projects.projects[i] === project) {
+const deleteProject = (proj) => {
+  for (let i = 0; i < projects.projects.length; i += 1) {
+    if (projects.projects[i] === proj) {
       projects.projects.splice(i, 1);
-      let projectContainer = document.getElementById("project-container");
+      const projectContainer = document.getElementById('project-container');
       clearDiv(projectContainer);
-      let projectsNav = document.getElementById("projects-nav");
-      events.emit("Project Deleted", projectsNav);
-      let resultingProjects = projects.projects;
-      events.emit("Render After Project Delete", resultingProjects[0]);
+      const projectsNav = document.getElementById('projects-nav');
+      events.emit('Project Deleted', projectsNav);
+      const resultingProjects = projects.projects;
+      events.emit('Render After Project Delete', resultingProjects[0]);
     }
   }
 };
 
 const getCurrentProject = () => {
-  let currentProjectName =
-    document.getElementById("project-container").firstElementChild.textContent;
-  for (let i = 0; i < projects.projects.length; i++) {
+  const currentProjectName =
+    document.getElementById('project-container').firstElementChild.textContent;
+  for (let i = 0; i < projects.projects.length; i += 1) {
     if (currentProjectName === projects.projects[i].id) {
       return projects.projects[i];
-    } else {
     }
   }
 };
 
 const editProjectAttribute = (data) => {
-  let id = data[0];
-  let attr = data[1];
-  let newAttrValue = data[2];
-  for (let i = 0; i < projects.projects.length; i++) {
+  const id = data[0];
+  const attr = data[1];
+  const newAttrValue = data[2];
+  for (let i = 0; i < projects.projects.length; i += 1) {
     if (projects.projects[i].id === id) {
       projects.projects[i][`${attr}`] = newAttrValue;
     }

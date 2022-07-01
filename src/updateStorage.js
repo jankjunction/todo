@@ -1,4 +1,4 @@
-import { projects } from "./project";
+import { projects } from './project';
 
 const updateStorage = () => {
   localStorage.projects = JSON.stringify(projects);

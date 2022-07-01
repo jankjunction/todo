@@ -1,5 +1,5 @@
 const events = (function () {
-  let events = {};
+  const events = {};
 
   function on(eventName, fn) {
     events[eventName] = events[eventName] || [];
@@ -8,7 +8,7 @@ const events = (function () {
 
   function off(eventName, fn) {
     if (events[eventName]) {
-      for (var i = 0; i < events[eventName].length; i++) {
+      for (let i = 0; i < events[eventName].length; i += 1) {
         if (events[eventName][i] === fn) {
           events[eventName].splice(i, 1);
           break;
@@ -19,16 +19,16 @@ const events = (function () {
 
   function emit(eventName, data) {
     if (events[eventName]) {
-      events[eventName].forEach(function (fn) {
+      events[eventName].forEach((fn) => {
         fn(data);
       });
     }
   }
 
   return {
-    on: on,
-    off: off,
-    emit: emit,
+    on,
+    off,
+    emit,
   };
 })();
 

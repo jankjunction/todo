@@ -1,31 +1,31 @@
-import { render } from "./render.js";
+import { render } from './render';
 
 const projectRender = (project) => {
-  let contentContainer = document.getElementById("content");
+  const contentContainer = document.getElementById('content');
 
-  let projectId = document.createElement("div");
+  const projectId = document.createElement('div');
   projectId.textContent = `${project.id}`;
-  projectId.setAttribute("class", "id");
+  projectId.setAttribute('class', 'id');
 
-  let projectDelete = document.createElement("button");
-  projectDelete.setAttribute("id", "project-delete");
-  projectDelete.textContent = "Delete Project";
+  const projectDelete = document.createElement('button');
+  projectDelete.setAttribute('id', 'project-delete');
+  projectDelete.textContent = 'Delete Project';
 
-  let projectDiv = document.createElement("div");
-  projectDiv.setAttribute("id", "project-container");
+  const projectDiv = document.createElement('div');
+  projectDiv.setAttribute('id', 'project-container');
 
-  let newTodo = document.createElement("span");
-  newTodo.setAttribute("id", "new-todo");
-  newTodo.textContent = "+ new todo";
+  const newTodo = document.createElement('span');
+  newTodo.setAttribute('id', 'new-todo');
+  newTodo.textContent = '+ new todo';
 
-  let projectTitle = document.createElement("div");
-  projectTitle.setAttribute("class", "title");
-  projectTitle.setAttribute("id", `${project.id}`);
+  const projectTitle = document.createElement('div');
+  projectTitle.setAttribute('class', 'title');
+  projectTitle.setAttribute('id', `${project.id}`);
   projectTitle.textContent = `${project.name}`;
-  projectTitle.setAttribute("contenteditable", "true");
+  projectTitle.setAttribute('contenteditable', 'true');
 
-  let projectHeader = document.createElement("div");
-  projectHeader.setAttribute("class", "project-header");
+  const projectHeader = document.createElement('div');
+  projectHeader.setAttribute('class', 'project-header');
   projectHeader.appendChild(projectTitle);
   projectHeader.appendChild(newTodo);
 

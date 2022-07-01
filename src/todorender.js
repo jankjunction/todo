@@ -1,55 +1,53 @@
-import { render } from "./render.js";
-
 const toDoRender = (toDo) => {
-  let contentContainer = document.getElementById("content");
+  const contentContainer = document.getElementById('content');
 
-  let toDoDiv = document.createElement("div");
-  toDoDiv.setAttribute("id", "todo-container");
+  const toDoDiv = document.createElement('div');
+  toDoDiv.setAttribute('id', 'todo-container');
 
-  let toDoId = document.createElement("div");
-  toDoId.setAttribute("id", "todo-id");
-  toDoId.setAttribute("class", "id");
+  const toDoId = document.createElement('div');
+  toDoId.setAttribute('id', 'todo-id');
+  toDoId.setAttribute('class', 'id');
   toDoId.textContent = `${toDo.id}`;
 
-  let toDoTitle = document.createElement("div");
-  toDoTitle.setAttribute("id", "todo-title");
-  toDoTitle.setAttribute("class", "title");
+  const toDoTitle = document.createElement('div');
+  toDoTitle.setAttribute('id', 'todo-title');
+  toDoTitle.setAttribute('class', 'title');
   toDoTitle.textContent = `${toDo.name}`;
-  toDoTitle.setAttribute("contenteditable", "true");
+  toDoTitle.setAttribute('contenteditable', 'true');
 
-  let dueDate = document.createElement("div");
-  dueDate.setAttribute("class", "container");
-  let dueDateLabel = document.createElement("div");
-  dueDateLabel.textContent = "Due Date:";
-  let toDoDueDate = document.createElement("input");
-  toDoDueDate.setAttribute("id", "todo-duedate");
-  toDoDueDate.type = "date";
+  const dueDate = document.createElement('div');
+  dueDate.setAttribute('class', 'container');
+  const dueDateLabel = document.createElement('div');
+  dueDateLabel.textContent = 'Due Date:';
+  const toDoDueDate = document.createElement('input');
+  toDoDueDate.setAttribute('id', 'todo-duedate');
+  toDoDueDate.type = 'date';
   toDoDueDate.value = `${toDo.dueDate}`;
   dueDate.appendChild(dueDateLabel);
   dueDate.appendChild(toDoDueDate);
 
-  let description = document.createElement("div");
-  description.setAttribute("class", "container");
-  let descriptionLabel = document.createElement("label");
-  descriptionLabel.textContent = "Description:";
-  let toDoDescription = document.createElement("div");
-  toDoDescription.setAttribute("id", "todo-description");
-  toDoDescription.setAttribute("contenteditable", "true");
+  const description = document.createElement('div');
+  description.setAttribute('class', 'container');
+  const descriptionLabel = document.createElement('label');
+  descriptionLabel.textContent = 'Description:';
+  const toDoDescription = document.createElement('div');
+  toDoDescription.setAttribute('id', 'todo-description');
+  toDoDescription.setAttribute('contenteditable', 'true');
   toDoDescription.textContent = `${toDo.description}`;
   description.appendChild(descriptionLabel);
   description.appendChild(toDoDescription);
 
-  let toDoPriority = document.createElement("div");
-  toDoPriority.setAttribute("id", "todo-priority");
+  const toDoPriority = document.createElement('div');
+  toDoPriority.setAttribute('id', 'todo-priority');
 
-  let priorityLabel = document.createElement("label");
-  priorityLabel.textContent = "Priority:";
-  let priority = document.createElement("select");
-  priority.setAttribute("id", "todo-priority-select");
-  let priorities = ["low", "med", "high"];
+  const priorityLabel = document.createElement('label');
+  priorityLabel.textContent = 'Priority:';
+  const priority = document.createElement('select');
+  priority.setAttribute('id', 'todo-priority-select');
+  const priorities = ['low', 'med', 'high'];
 
-  for (let i = 0; i < priorities.length; i++) {
-    let option = document.createElement("option");
+  for (let i = 0; i < priorities.length; i += 1) {
+    const option = document.createElement('option');
     option.textContent = priorities[i];
     priority.appendChild(option);
   }
@@ -59,20 +57,20 @@ const toDoRender = (toDo) => {
   toDoPriority.appendChild(priorityLabel);
   toDoPriority.appendChild(priority);
 
-  let notes = document.createElement("div");
-  notes.setAttribute("class", "container");
-  let notesLabel = document.createElement("label");
-  notesLabel.textContent = "Notes:";
-  let toDoNotes = document.createElement("div");
-  toDoNotes.setAttribute("id", "todo-notes");
-  toDoNotes.setAttribute("contenteditable", "true");
+  const notes = document.createElement('div');
+  notes.setAttribute('class', 'container');
+  const notesLabel = document.createElement('label');
+  notesLabel.textContent = 'Notes:';
+  const toDoNotes = document.createElement('div');
+  toDoNotes.setAttribute('id', 'todo-notes');
+  toDoNotes.setAttribute('contenteditable', 'true');
   toDoNotes.textContent = `${toDo.notes}`;
   notes.appendChild(notesLabel);
   notes.appendChild(toDoNotes);
 
-  let deleteBtn = document.createElement("button");
-  deleteBtn.setAttribute("id", "delete-todo");
-  deleteBtn.textContent = "Delete ToDo";
+  const deleteBtn = document.createElement('button');
+  deleteBtn.setAttribute('id', 'delete-todo');
+  deleteBtn.textContent = 'Delete ToDo';
 
   toDoDiv.appendChild(toDoId);
   toDoDiv.appendChild(toDoTitle);
@@ -84,12 +82,12 @@ const toDoRender = (toDo) => {
 
   contentContainer.appendChild(toDoDiv);
 
-  //Hides delete button if you are currently in the Today or This Week views
-  let currentProject = document.getElementById("project-container");
-  let title = currentProject.childNodes[0].childNodes[0].textContent;
-  if (title === "Today" || title === "This Week") {
-    let todoDeleteBtn = document.getElementById("delete-todo");
-    todoDeleteBtn.classList.toggle("invisible");
+  // Hides delete button if you are currently in the Today or This Week views
+  const currentProject = document.getElementById('project-container');
+  const title = currentProject.childNodes[0].childNodes[0].textContent;
+  if (title === 'Today' || title === 'This Week') {
+    const todoDeleteBtn = document.getElementById('delete-todo');
+    todoDeleteBtn.classList.toggle('invisible');
   }
 };
 

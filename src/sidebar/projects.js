@@ -1,25 +1,25 @@
-import { projects } from "../project.js";
+import { projects } from '../project';
 
 const navprojects = () => {
-  let sidebarDiv = document.getElementById("sidebar");
-  let projectsDiv = document.createElement("div");
-  projectsDiv.setAttribute("id", "projects-nav");
+  const sidebarDiv = document.getElementById('sidebar');
+  const projectsDiv = document.createElement('div');
+  projectsDiv.setAttribute('id', 'projects-nav');
 
   sidebarDiv.appendChild(projectsDiv);
 
-  let projectsTitle = document.createElement("div");
-  projectsTitle.textContent = "Projects";
-  projectsTitle.setAttribute("id", "projects-nav-title");
+  const projectsTitle = document.createElement('div');
+  projectsTitle.textContent = 'Projects';
+  projectsTitle.setAttribute('id', 'projects-nav-title');
 
   projectsDiv.appendChild(projectsTitle);
   projects.projects.forEach((element) => {
-    let project = document.createElement("div");
-    project.setAttribute("class", "nav-project");
+    const project = document.createElement('div');
+    project.setAttribute('class', 'nav-project');
     project.textContent = element.name;
     projectsDiv.appendChild(project);
 
-    let id = document.createElement("div");
-    id.setAttribute("class", "invisible");
+    const id = document.createElement('div');
+    id.setAttribute('class', 'invisible');
     id.textContent = element.id;
     project.appendChild(id);
   });

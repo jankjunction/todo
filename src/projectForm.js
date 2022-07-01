@@ -1,36 +1,36 @@
-import events from "./events.js";
-import { project } from "./project.js";
+import events from './events.js';
+import { project } from './project.js';
 
 const projectForm = () => {
-  const content = document.getElementById("content");
+  const content = document.getElementById('content');
 
-  let projectFormDiv = document.createElement("div");
-  projectFormDiv.setAttribute("id", "project-form");
-  projectFormDiv.classList.toggle("invisible");
+  const projectFormDiv = document.createElement('div');
+  projectFormDiv.setAttribute('id', 'project-form');
+  projectFormDiv.classList.toggle('invisible');
 
-  let titleLabel = document.createElement("label");
-  titleLabel.textContent = "Project Title";
-  let title = document.createElement("input");
-  title.setAttribute("id", "new-project-title");
-  let submit = document.createElement("input");
-  submit.type = "submit";
-  submit.setAttribute("id", "project-submit");
+  const titleLabel = document.createElement('label');
+  titleLabel.textContent = 'Project Title';
+  const title = document.createElement('input');
+  title.setAttribute('id', 'new-project-title');
+  const submit = document.createElement('input');
+  submit.type = 'submit';
+  submit.setAttribute('id', 'project-submit');
 
   projectFormDiv.appendChild(titleLabel);
   projectFormDiv.appendChild(title);
   projectFormDiv.appendChild(submit);
   content.appendChild(projectFormDiv);
 
-  content.addEventListener("click", (e) => {
-    if (e.target.id === "project-submit") {
-      let newProject = new project();
+  content.addEventListener('click', (e) => {
+    if (e.target.id === 'project-submit') {
+      const newProject = new project();
       newProject.name = title.value;
       newProject.todos = [];
-      projectFormDiv.classList.toggle("invisible");
-      events.emit("New Project", newProject);
-      let projectContainer = document.getElementById("project-container");
-      events.emit("Clear Div", projectContainer);
-      title.value = "";
+      projectFormDiv.classList.toggle('invisible');
+      events.emit('New Project', newProject);
+      const projectContainer = document.getElementById('project-container');
+      events.emit('Clear Div', projectContainer);
+      title.value = '';
     }
   });
 };

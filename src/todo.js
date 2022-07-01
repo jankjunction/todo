@@ -1,7 +1,7 @@
-import events from "./events";
-import { getCurrentProject, projects } from "./project";
-import { projectRender } from "./projectrender";
-import clearDiv from "./clearDiv";
+import events from './events';
+import { projects } from './project';
+import { projectRender } from './projectrender';
+import clearDiv from './clearDiv';
 
 class todo {
   constructor(name, description, dueDate, priority, notes, id) {
@@ -14,51 +14,50 @@ class todo {
   }
 }
 
-function addToDo(project, todo) {
+const addToDo = (project, todo) => {
   project.todos.push(todo);
-}
+};
 
 const deleteToDo = (project, todo) => {
-  let projectContainer = document.getElementById("project-container");
+  const projectContainer = document.getElementById('project-container');
   clearDiv(projectContainer);
-  for (let i = 0; i < project.todos.length; i++) {
+  for (let i = 0; i < project.todos.length; i += 1) {
     if (project.todos[i] === todo) {
       project.todos.splice(i, 1);
       projectRender(project);
-      events.emit("Project Changed", "");
+      events.emit('Project Changed', '');
     }
   }
 
-  events.emit("ToDo Deleted", "");
+  events.emit('ToDo Deleted', '');
 };
 
 function toDoID() {
-  let id = window.crypto.randomUUID();
+  const id = window.crypto.randomUUID();
   return id;
 }
 
 const getToDoById = (id) => {
-  let projs = projects.projects;
-  for (let i = 0; i < projs.length; i++) {
-    let todos = projects.projects[i].todos;
+  const projs = projects.projects;
+  for (let i = 0; i < projs.length; i += 1) {
+    const { todos } = projects.projects[i];
 
-    for (let j = 0; j < todos.length; j++) {
+    for (let j = 0; j < todos.length; j += 1) {
       if (id === projs[i].todos[j].id) {
         return projs[i].todos[j];
-      } else {
       }
     }
   }
 };
 
 const editToDoAttribute = (data) => {
-  let projectId = data[0];
-  let toDoId = data[1];
-  let attr = data[2];
-  let newAttrValue = data[3];
-  for (let i = 0; i < projects.projects.length; i++) {
+  const projectId = data[0];
+  const toDoId = data[1];
+  const attr = data[2];
+  const newAttrValue = data[3];
+  for (let i = 0; i < projects.projects.length; i += 1) {
     if (projects.projects[i].id === projectId) {
-      for (let j = 0; j < projects.projects[i].todos.length; j++) {
+      for (let j = 0; j < projects.projects[i].todos.length; j += 1) {
         if (projects.projects[i].todos[j].id === toDoId) {
           projects.projects[i].todos[j][`${attr}`] = newAttrValue;
         }
